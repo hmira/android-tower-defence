@@ -12,6 +12,7 @@ import android.widget.Button;
 public class MainMenu extends Activity {
 
     private Context context;
+    public static int GAME_RESULT_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class MainMenu extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainGame.class);
-                startActivityForResult(intent, 1234);
+                startActivityForResult(intent, GAME_RESULT_CODE);
             }
         });
 
@@ -47,14 +48,14 @@ public class MainMenu extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1234) {
+        if (requestCode == GAME_RESULT_CODE) {
             if (resultCode == MainGame.GAME_LOST) {
                 new AlertDialog.Builder(this)
-                        .setTitle("Tower defence")
-                        .setMessage("You lost")
+                        .setTitle(getString(R.string.towerDefence))
+                        .setMessage(getString(R.string.youLost))
                         .setIcon(R.drawable.canon)
                         .setCancelable(true)
-                        .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
@@ -64,11 +65,11 @@ public class MainMenu extends Activity {
             }
             if (resultCode == MainGame.GAME_WON) {
                 new AlertDialog.Builder(this)
-                        .setTitle("Tower defence")
-                        .setMessage("You WIN!")
+                        .setTitle(getString(R.string.towerDefence))
+                        .setMessage(getString(R.string.youWin))
                         .setIcon(R.drawable.canon)
                         .setCancelable(true)
-                        .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();

@@ -5,9 +5,9 @@ android {
     buildToolsVersion '19.1.0'
 
     defaultConfig {
-        applicationId "com.zombietd"
-        minSdkVersion 17
-        targetSdkVersion 17
+        applicationId "com.towerdefence"
+        minSdkVersion 15
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:21.0.0'
     compile files('libs/andengine.jar')
 }

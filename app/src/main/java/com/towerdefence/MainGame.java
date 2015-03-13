@@ -13,6 +13,14 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Display;
+
+import com.towerdefence.gameplay.Bullet;
+import com.towerdefence.gameplay.Button;
+import com.towerdefence.gameplay.Cannon;
+import com.towerdefence.gameplay.Enemy;
+import com.towerdefence.gameplay.Explosion;
+import com.towerdefence.gameplay.FreePlace;
+
 import org.anddev.andengine.engine.camera.Camera;
 
 
@@ -36,7 +44,6 @@ import org.anddev.andengine.entity.text.ChangeableText;
 import org.anddev.andengine.input.touch.TouchEvent;
 
 public class MainGame extends BaseGameActivity  implements IOnSceneTouchListener {
-	//Global Variables
 	
 	BitmapTextureAtlas mBitmapTextureAtlas;
 	
@@ -115,22 +122,20 @@ public class MainGame extends BaseGameActivity  implements IOnSceneTouchListener
 		
 		try {
 		    shootingSound = SoundFactory.createSoundFromAsset(mEngine
-		        .getSoundManager(), this, "Bullet.mp3");
+		        .getSoundManager(), this, getString(R.string.bulletSound));
 		} catch (IllegalStateException e) {
 		    e.printStackTrace();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 
-
-        //backgroundTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, "Grassybackground.png", 600, 600); //Background image
-        backgroundTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, "background.png", 624, 624); //Background image
-        cannonTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, "delo2.png",0, 128);
-		enemyTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, "catenemy.png", 0, 228, 5, 1);
-		bulletTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, "Bullet.png",128, 0);
-		buttonTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, "buyButton.png", 128, 128, 2 , 1);
-        explosionTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, "Explosion.png", 2000, 2000, 6, 1); // x, y, number of cells, number of rows
-        freeTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, "free.png", 2500, 2500, 6, 1); // x, y, number of cells, number of rows
+        backgroundTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.backgroundImage), 624, 624); //Background image
+        cannonTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.cannonImage),0, 128);
+		enemyTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.enemyImage), 0, 228, 5, 1);
+		bulletTexture = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.bulletImage),128, 0);
+		buttonTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.buyImage), 128, 128, 2 , 1);
+        explosionTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.explosionImage), 2000, 2000, 6, 1); // x, y, number of cells, number of rows
+        freeTexture = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.mBitmapTextureAtlas, this, getString(R.string.freePlaceImage), 2500, 2500, 6, 1); // x, y, number of cells, number of rows
 
         mEngine.getTextureManager().loadTexture(mBitmapTextureAtlas);	// loading textures in the engine
 		
@@ -148,7 +153,6 @@ public class MainGame extends BaseGameActivity  implements IOnSceneTouchListener
 		explosionList = new ArrayList<Explosion>();
         freePlaceList = new ArrayList<FreePlace>();
 
-        //numEnemies = 6;
         numEnemies = 10;
         spawnCounter = 0;
 		spawnDelay = 400;
