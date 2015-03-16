@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bulletSound" translatable="false">Bullet.mp3</string>
+    <string name="backgroundImage" translatable="false">background.png</string>
+    <string name="cannonImage" translatable="false">delo2.png</string>
+    <string name="enemyImage" translatable="false">catenemy.png</string>
+    <string name="bulletImage" translatable="false">Bullet.png</string>
+    <string name="buyImage" translatable="false">buyButton.png</string>
+    <string name="explosionImage" translatable="false">Explosion.png</string>
+    <string name="freePlaceImage" translatable="false">free.png</string>
+</resources>

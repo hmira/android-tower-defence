@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Tower Defence</string>
     <string name="menu_settings">Settings</string>
     <string name="towerDefence">Tower defence</string>
     <string name="youLost">You lost</string>
     <string name="ok">OK</string>
     <string name="youWin">You WIN!</string>
-
-    <string name="bulletSound">Bullet.mp3</string>
-    <string name="backgroundImage">background.png</string>
-    <string name="cannonImage">delo2.png</string>
-    <string name="enemyImage">catenemy.png</string>
-    <string name="bulletImage">Bullet.png</string>
-    <string name="buyImage">buyButton.png</string>
-    <string name="explosionImage">Explosion.png</string>
-    <string name="freePlaceImage">free.png</string>
-
 </resources>
