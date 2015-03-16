@@ -21,7 +21,7 @@ public class MainMenu extends Activity {
 
         context = this;
 
-        Button button1 = (Button)findViewById(R.id.button_newgame);
+        Button button1 = (Button) findViewById(R.id.button_newgame);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +31,7 @@ public class MainMenu extends Activity {
         });
 
 
-        Button button2 = (Button)findViewById(R.id.button_how_to);
+        Button button2 = (Button) findViewById(R.id.button_how_to);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +39,6 @@ public class MainMenu extends Activity {
                 startActivity(intent);
             }
         });
-
 
 
     }

@@ -9,33 +9,32 @@ import com.towerdefence.MainGame;
 
 
 public class Enemy extends AnimatedSprite {
-	
-	public PointF location;
-	public boolean active;
-	private float hp;
+
+    public PointF location;
+    public boolean active;
+    private float hp;
     private int currentStage = 0;
-	
-	public Enemy(float pX, float pY, TiledTextureRegion texture) {
-		super(pX - 10, pY - 10, texture);
-		this.location = new PointF(pX, pY);
-		this.active = true;
-		hp = 900;
-		MainGame.enemyList.add(this);
-	}
-	
-	public void move(float x, float y){
-		this.location.x = this.location.x + x;
-		this.location.y = this.location.y + y;
-		this.setPosition(this.location.x, this.location.y);
-	}
+
+    public Enemy(float pX, float pY, TiledTextureRegion texture) {
+        super(pX - 10, pY - 10, texture);
+        this.location = new PointF(pX, pY);
+        this.active = true;
+        hp = 900;
+        MainGame.enemyList.add(this);
+    }
+
+    public void move(float x, float y) {
+        this.location.x = this.location.x + x;
+        this.location.y = this.location.y + y;
+        this.setPosition(this.location.x, this.location.y);
+    }
 
     public void move(float x) {
         Direction direction = mapDirections[currentStage];
-        switch (direction)
-        {
+        switch (direction) {
             case RIGHT:
                 this.location.x = this.location.x + x;
-                this.setPosition(this.location  .x, this.location.y);
+                this.setPosition(this.location.x, this.location.y);
                 break;
 
             case LEFT:
@@ -60,19 +59,19 @@ public class Enemy extends AnimatedSprite {
         }
     }
 
-	public void takeDamage(float dmg){
-		hp = hp - dmg;
-		
-		if (hp <= 0){
+    public void takeDamage(float dmg) {
+        hp = hp - dmg;
+
+        if (hp <= 0) {
             if (this.active == true) {
                 MainGame.money += 10;
                 MainGame.updateMoney();
                 this.active = false;//
             }
-			MainGame.MainScene.detachChild(this);
-		}
-		
-	}
+            MainGame.MainScene.detachChild(this);
+        }
+
+    }
 
     public boolean isAlive() {
         return hp > 0;
